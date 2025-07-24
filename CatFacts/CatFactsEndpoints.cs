@@ -32,6 +32,8 @@ public static class CatFactsEndpoints
 			string responseMessage = await response.Content.ReadAsStringAsync();
 			CatFactsRequest facts = JsonSerializer.Deserialize<CatFactsRequest>(responseMessage);
 
+			_app.Logger.LogInformation(facts.Fact);
+
 			return TypedResults.Ok(facts);
 
 		}
